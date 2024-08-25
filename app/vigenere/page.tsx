@@ -80,7 +80,7 @@ function Vigenere() {
             Decode
           </button>
           <button className="hidden">
-            The Key is: "CNSISFUN"
+            The Key is: &rdquo;CNSISFUN&rdquo;
           </button>
           {decodedText && (
             <div className="mt-4 p-2 border border-gray-300 rounded">
