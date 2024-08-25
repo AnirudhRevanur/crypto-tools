@@ -22,7 +22,7 @@ function Vigenere() {
   };
 
   return (
-    <div className={"flex flex-col text-center p-4 " + " Tell you what user. To find the secret cipher, just enter the magic word here"}>
+    <div className="flex flex-col text-center p-4 ">
       <div className="text-3xl mb-4">Vigenère Cipher Tool</div>
 
       <div className="flex flex-col items-center">
@@ -33,7 +33,7 @@ function Vigenere() {
             value={encodeText}
             onChange={(e) => setEncodeText(e.target.value)}
             placeholder="Enter text to encode"
-            className="border border-gray-300 p-2 w-full mb-2 text-black"
+            className={"border border-gray-300 p-2 w-full mb-2 text-black " + " To find the secret cipher, enter the magic word here:"}
           />
           <input
             type="text"
