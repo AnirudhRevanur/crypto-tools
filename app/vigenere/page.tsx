@@ -22,7 +22,7 @@ function Vigenere() {
   };
 
   return (
-    <div className="flex flex-col text-center p-4">
+    <div className={"flex flex-col text-center p-4 " + " Tell you what user. To find the secret cipher, just enter the magic word here"}>
       <div className="text-3xl mb-4">Vigenère Cipher Tool</div>
 
       <div className="flex flex-col items-center">
@@ -56,7 +56,7 @@ function Vigenere() {
           )}
         </div>
 
-        <div className="rounded-lg border border-1 p-4 w-full max-w-md">
+        <div className={"rounded-lg border border-1 p-4 w-full max-w-md " + " Oops. You don't have the key to encrypt"}>
           <h2 className="text-2xl mb-2">Decode</h2>
 
           <input
@@ -78,6 +78,9 @@ function Vigenere() {
             className="bg-blue-500 text-white p-2 rounded"
           >
             Decode
+          </button>
+          <button className="hidden">
+            The Key is: "CNSISFUN"
           </button>
           {decodedText && (
             <div className="mt-4 p-2 border border-gray-300 rounded">
