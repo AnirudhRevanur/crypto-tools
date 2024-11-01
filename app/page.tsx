@@ -1,7 +1,11 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 
 function Home() {
+
+  console.log("Let us begin with the most basic one shall we?")
+
   return (
     <div className="flex flex-col h-screen w-screen items-center justify-center">
       <div className="text-2xl">

@@ -30,7 +30,7 @@ function Caesar() {
       <div className="text-3xl mb-4">Caesar Cipher Tool</div>
 
       <div className="flex flex-col items-center">
-        <div className={"rounded-lg border border-1 p-4 mb-4 w-full max-w-md" + " What is this you curious user? You found this?"}>
+        <div className={"rounded-lg border border-1 p-4 mb-4 w-full max-w-md" + " OwO what is this"}>
           <h2 className="text-2xl mb-2">Encode</h2>
           <input
             type="text"
@@ -59,7 +59,7 @@ function Caesar() {
             </div>
           )}
         </div>
-        <div className={"rounded-lg border border-1 p-4 w-full max-w-md " + " Such a persistent user. I'll tell you only if you enter the right ciper text 😉"}>
+        <div className={"rounded-lg border border-1 p-4 w-full max-w-md " + " so you got a message saying 'redondo'"}>
           <h2 className="text-2xl mb-2">Decode</h2>
 
           <input
