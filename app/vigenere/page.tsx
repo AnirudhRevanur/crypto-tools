@@ -33,7 +33,7 @@ function Vigenere() {
             value={encodeText}
             onChange={(e) => setEncodeText(e.target.value)}
             placeholder="Enter text to encode"
-            className={"border border-gray-300 p-2 w-full mb-2 text-black " + " Redondo says thanks"}
+            className={"border border-gray-300 p-2 w-full mb-2 text-black " + " Julius says thanks"}
           />
           <input
             type="text"
@@ -56,7 +56,7 @@ function Vigenere() {
           )}
         </div>
 
-        <div className={"rounded-lg border border-1 p-4 w-full max-w-md " + " Do not forget to visit the place Redondo told you about"}>
+        <div className={"rounded-lg border border-1 p-4 w-full max-w-md " + " Do not forget to visit the place Blaise told you about"}>
           <h2 className="text-2xl mb-2">Decode</h2>
 
           <input
