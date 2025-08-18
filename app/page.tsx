@@ -32,6 +32,10 @@ function Home() {
           >
             Railway Cipher
           </Link>
+          <Link
+            href="/playfair"
+            className="rounded-lg text-center bg-green-600 p-2 m-2"
+          >Playfair Cipher</Link>
         </div>
       </div>
     </div>
