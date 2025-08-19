@@ -1,25 +1,35 @@
-export default function decodePlayfairCipher(grid: string[][], ciphertext: string) {
-  let result = "";
-  const flatGrid = grid.flat()
-  for (let i = 0; i < ciphertext.length; i = i + 2) {
-    let [row1, columm1] = [Math.floor(flatGrid.indexOf(ciphertext[i]) / 6), flatGrid.indexOf(ciphertext[i]) % 6]
-    let [row2, columm2] = [Math.floor(flatGrid.indexOf(ciphertext[i + 1]) / 6), flatGrid.indexOf(ciphertext[i + 1]) % 6]
-    console.log(`Encoding the values ${grid[row1][columm1]}`)
+export default function decodePlayfairCipher(
+  allChars: string[],
+  ciphertext: string
+) {
+  const size = 6;
+
+  const positionMap: Record<string, [number, number]> = {};
+  allChars.forEach((ch, i) => {
+    positionMap[ch] = [Math.floor(i / size), i % size];
+  });
+
+  const result: string[] = [];
+  for (let i = 0; i < ciphertext.length; i += 2) {
+    const first = ciphertext[i];
+    const second = ciphertext[i + 1];
+
+    const [row1, col1] = positionMap[first];
+    const [row2, col2] = positionMap[second];
+
     if (row1 === row2) {
-      result += grid[row1][(columm1 - 1) % 6]
-      result += grid[row2][(columm2 - 1) % 6]
+      result.push(allChars[row1 * size + ((col1 + size - 1) % size)]);
+      result.push(allChars[row2 * size + ((col2 + size - 1) % size)]);
     }
-
-    else if (columm1 === columm2) {
-      result += grid[(row1 - 1) % 6][columm1]
-      result += grid[(row2 - 1) % 6][columm2]
+    else if (col1 === col2) {
+      result.push(allChars[((row1 + size - 1) % size) * size + col1]);
+      result.push(allChars[((row2 + size - 1) % size) * size + col2]);
     }
-
     else {
-      result += grid[row1][columm2]
-      result += grid[row2][columm1]
+      result.push(allChars[row1 * size + col2]);
+      result.push(allChars[row2 * size + col1]);
     }
   }
 
-  return result
+  return result.join("");
 }

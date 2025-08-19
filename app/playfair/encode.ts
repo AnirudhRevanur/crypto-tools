@@ -1,44 +1,51 @@
-export default function encodePlayfairCipher(grid: string[][], plaintext: string) {
-  let cleanedPlaintext = ""
-  let result = ""
+export default function encodePlayfairCipher(
+  allChars: string[],
+  plaintext: string
+) {
+  const size = 6;
 
+  const positionMap: Record<string, [number, number]> = {};
+
+  allChars.forEach((ch, i) => {
+    positionMap[ch] = [Math.floor(i / size), i % size];
+  })
+
+  const cleaned: string[] = [];
   for (let i = 0; i < plaintext.length; i++) {
-    let first = plaintext[i];
-    let second = plaintext[i + 1];
+    const first = plaintext[i];
+    const second = plaintext[i + 1];
 
     if (first === second) {
-      cleanedPlaintext += first + 'X'
+      cleaned.push(first, "X");
     } else {
-      cleanedPlaintext += first + (second || "")
+      cleaned.push(first, second || "X");
       i++;
     }
   }
 
-  if (cleanedPlaintext.length % 2 !== 0) {
-    cleanedPlaintext += 'X'
-  }
+  const result: string[] = [];
+  for (let i = 0; i < cleaned.length; i += 2) {
+    const first = cleaned[i];
+    const second = cleaned[i + 1];
 
-  const flatGrid = grid.flat()
-  for (let i = 0; i < cleanedPlaintext.length; i = i + 2) {
-    let [row1, columm1] = [Math.floor(flatGrid.indexOf(cleanedPlaintext[i]) / 6), flatGrid.indexOf(cleanedPlaintext[i]) % 6]
-    let [row2, columm2] = [Math.floor(flatGrid.indexOf(cleanedPlaintext[i + 1]) / 6), flatGrid.indexOf(cleanedPlaintext[i + 1]) % 6]
-    console.log(`Encoding the values ${grid[row1][columm1]}`)
+    const [row1, col1] = positionMap[first];
+    const [row2, col2] = positionMap[second];
+
     if (row1 === row2) {
-      result += grid[row1][(columm1 + 1) % 6]
-      result += grid[row2][(columm2 + 1) % 6]
+      result.push(allChars[row1 * size + ((col1 + 1) % size)]);
+      result.push(allChars[row2 * size + ((col2 + 1) % size)]);
     }
 
-    else if (columm1 === columm2) {
-      result += grid[(row1 + 1) % 6][columm1]
-      result += grid[(row2 + 1) % 6][columm2]
+    else if (col1 === col2) {
+      result.push(allChars[((row1 + 1) % size) * size + col1]);
+      result.push(allChars[((row2 + 1) % size) * size + col2]);
     }
 
     else {
-      result += grid[row1][columm2]
-      result += grid[row2][columm1]
+      result.push(allChars[row1 * size + col2]);
+      result.push(allChars[row2 * size + col1])
     }
-
   }
 
-  return result
+  return result.join("")
 }
