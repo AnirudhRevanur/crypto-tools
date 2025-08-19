@@ -72,8 +72,8 @@ function Playfair() {
               return (
                 <div
                   key={i}
-                  className={`w-10 h-10 flex items-center justify-center border border-gray-500 rounded bg-white text-black
-                    ${isKeywordChar ? "bg-red-500" : "bg-white"}`
+                  className={`w-10 h-10 flex items-center justify-center border border-gray-500 rounded text-black
+                  ${isKeywordChar ? "bg-red-500" : "bg-white"}`
                   }
                 >
                   {cell}
