@@ -13,6 +13,8 @@ function Playfair() {
   const [decodedText, setDecodedText] = useState("");
 
   const [keyword, setKeyword] = useState("");
+  const [paddingChar, setPaddingChar] = useState("X");
+
 
   const keywordProcessed = useMemo(
     () => keyword.toUpperCase().replace(/[^A-Z0-9]/g, ""),
@@ -39,7 +41,7 @@ function Playfair() {
 
   const handleEncode = () => {
     const cleaned = encodeText.toUpperCase().replace(/[^A-Z0-9]/g, "")
-    const result = encodePlayfairCipher(allChars, cleaned)
+    const result = encodePlayfairCipher(allChars, cleaned, paddingChar)
     setEncodedText(result);
   };
 
@@ -64,6 +66,22 @@ function Playfair() {
             placeholder="Enter keyword"
             className="border border-gray-300 p-2 w-full mb-4 text-black"
           />
+
+          {/*Padding Selection*/}
+          <div className="mb-4 text-left" >
+            <label className="block mb-1 font-semibold">Padding Character</label>
+            <select
+              value={paddingChar}
+              onChange={(e) => setPaddingChar(e.target.value)}
+              className="border border-gray-300 p-2 w-full text-black"
+            >
+              {BASE_CHARS.split("").map((ch) => (
+                <option key={ch} value={ch}>
+                  {ch}
+                </option>
+              ))}
+            </select>
+          </div>
 
           {/* Grid UI */}
           <div className="grid grid-cols-6 gap-1 justify-center">

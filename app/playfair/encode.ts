@@ -1,6 +1,7 @@
 export default function encodePlayfairCipher(
   allChars: string[],
-  plaintext: string
+  plaintext: string,
+  paddingChar: string
 ) {
   const size = 6;
 
@@ -16,9 +17,9 @@ export default function encodePlayfairCipher(
     const second = plaintext[i + 1];
 
     if (first === second) {
-      cleaned.push(first, "X");
+      cleaned.push(first, paddingChar);
     } else {
-      cleaned.push(first, second || "X");
+      cleaned.push(first, second || paddingChar);
       i++;
     }
   }
