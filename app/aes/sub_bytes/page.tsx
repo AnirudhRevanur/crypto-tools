@@ -2,10 +2,21 @@
 import React, { useState } from "react";
 import substituteBytes from "./substituteByte";
 
+type Poly = number[];
+
+const formatPolynomial = (poly: Poly | null): string => {
+  if (!poly || poly.length === 0) return "0";
+  return poly.map((exp) => (
+    exp === 0 ? "1" : `x^${exp}`
+  )).join(" + ")
+}
+
+
 export default function SubBytes() {
   const [substituteText, setSubstituteText] = useState("");
   const [error, setError] = useState("");
   const [result, setResult] = useState<string | null>(null);
+  const [inversePolynomial, setInversePolynomial] = useState<Poly | null>(null);
 
   const handleSubstitute = () => {
     let input = substituteText.trim();
@@ -33,8 +44,9 @@ export default function SubBytes() {
 
     setError("");
     const byte = parseInt(input, 16);
-    const substituted = substituteBytes(byte);
+    const [inverse, substituted] = substituteBytes(byte);
     setResult("0x" + substituted.toString(16).padStart(2, "0"));
+    setInversePolynomial(inverse)
   };
 
   return (
@@ -60,6 +72,7 @@ export default function SubBytes() {
           </button>
           {result && (
             <p className="mt-4 text-lg">
+              Inverse Polynomial Value: {formatPolynomial(inversePolynomial)} <br />
               Substituted Value: {result}
             </p>
           )}

@@ -8,6 +8,8 @@ const routes = [
   { title: "Caesar", route: "/caesar" },
   { title: "Vigenere", route: "/vigenere" },
   { title: "Playfair", route: "/playfair" },
+  { title: "Railway", route: "/railway" },
+  { title: "AES", route: "/aes" }
 ];
 
 export default function Navbar() {

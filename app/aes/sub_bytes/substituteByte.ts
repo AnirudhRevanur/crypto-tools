@@ -95,11 +95,18 @@ function affineTransform(x: number): number {
   return result;
 }
 
-export default function substituteBytes(byte: number) {
+export default function substituteBytes(byte: number): [Poly, number] {
   const mod: Poly = [8, 4, 3, 1, 0];
-  const poly = byteToPolynomial(byte);
-  const invPoly = polynomialInverse(poly, mod);
-  const inv = polynomialToByte(invPoly);
 
-  return affineTransform(inv);
+  if (byte === 0) {
+    return [[], affineTransform(0)]
+  }
+
+  const poly = byteToPolynomial(byte);
+  let invPoly = polynomialInverse(poly, mod);
+
+  invPoly = polynomialDivision(poly, mod)[1];
+
+  const inv = polynomialToByte(invPoly);
+  return [invPoly, affineTransform(inv)];
 }
