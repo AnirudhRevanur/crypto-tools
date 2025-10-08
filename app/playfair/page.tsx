@@ -5,7 +5,7 @@ import decodePlayfairCipher from "./decode";
 
 const BASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
-function Playfair() {
+export default function Playfair() {
   const [encodeText, setEncodeText] = useState("");
   const [encodedText, setEncodedText] = useState("");
 
@@ -154,5 +154,3 @@ function Playfair() {
     </div>
   );
 }
-
-export default Playfair;
