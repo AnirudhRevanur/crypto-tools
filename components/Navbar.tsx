@@ -9,7 +9,8 @@ const routes = [
   { title: "Vigenere", route: "/vigenere" },
   { title: "Playfair", route: "/playfair" },
   { title: "Railway", route: "/railway" },
-  { title: "AES", route: "/aes" }
+  { title: "AES", route: "/aes" },
+  { title: "Digital Signature", route: "/digital_signature" }
 ];
 
 export default function Navbar() {

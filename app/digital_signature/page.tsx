@@ -1,31 +1,24 @@
 import Link from "next/link";
 
-export default function AESPage() {
+export default function SignaturePage() {
   return (
     <div className="flex flex-col h-screen w-screen items-center justify-center">
       <div className="text-2xl">
-        Choose an AES Mini Function:
+        Choose Function
       </div>
       <div className="flex flex-col p-2">
         <Link
-          href="/aes/sub_bytes"
+          href="/digital_signature/signing"
           className="rounded-lg text-center bg-green-600 p-2 m-2"
         >
-          Substitute Bytes
+          Signing
         </Link>
 
         <Link
-          href="/aes/mix_columns"
+          href="/digital_signature/verification"
           className="rounded-lg text-center bg-green-600 p-2 m-2"
         >
-          Mix Columns
-        </Link>
-
-        <Link
-          href="/aes/key_gen"
-          className="rounded-lg text-center bg-green-600 p-2 m-2"
-        >
-          Key Generation
+          Verification
         </Link>
       </div>
 

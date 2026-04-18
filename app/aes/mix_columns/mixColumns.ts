@@ -26,7 +26,6 @@ function mixColumn(col: number[]): number[] {
 }
 
 export default function mixColumns(state: number[][]): number[][] {
-  console.log("Called")
 
   const newState: number[][] = [];
 
